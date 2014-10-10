@@ -103,7 +103,5 @@ class NewListTest(TestCase):
         data={'new_item': 'A new list item'}
     )
 
-    # self.assertEqual(response.status_code, 302)
-    # self.assertEqual(response['location'], '/lists/the-only-list-in-the-world/')
-
-    self.assertRedirects(response, '/lists/the-only-list-in-the-world/')
+    new_list = List.objects.first()
+    self.assertRedirects(response, '/lists/%d/' % (new_list.id,))
