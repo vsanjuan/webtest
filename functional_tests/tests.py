@@ -1,6 +1,7 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import unittest
 
 class NewVisitorTest(LiveServerTestCase):
 
@@ -82,9 +83,5 @@ class NewVisitorTest(LiveServerTestCase):
     self.assertNotIn('Buy peacock feathers', page_text)
     self.assertIn('Buy milk', page_text)
 
-    # Edith wonders whether the site will remember her list. Then she sees
-    # that the site has generated a unique URL for her -- there is some
-    # explanatory text to that effect.
-    self.fail('Finish the test!')
-    # She visits that URL - her to-do list is still there.
+
     # Satisfied, she goes back to sleep
