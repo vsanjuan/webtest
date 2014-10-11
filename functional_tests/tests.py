@@ -1,7 +1,6 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import unittest
 
 class NewVisitorTest(LiveServerTestCase):
 
@@ -82,6 +81,5 @@ class NewVisitorTest(LiveServerTestCase):
     page_text = self.browser.find_element_by_tag_name('body').text
     self.assertNotIn('Buy peacock feathers', page_text)
     self.assertIn('Buy milk', page_text)
-
 
     # Satisfied, she goes back to sleep
