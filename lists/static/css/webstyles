@@ -1,0 +1,4 @@
+#id_list_table{
+  border-style: solid;
+  border-color: #ff0000;
+}
