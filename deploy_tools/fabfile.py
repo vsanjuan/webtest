@@ -2,7 +2,8 @@ from fabric.contrib.files import append, exists, sed
 from fabric.api import env, local, run
 import random
 
-REPO_URL ='https://github.com/vsanjuan/testweb.git'
+REPO_URL ='https://github.com/vsanjuan/webtest.git'
+URL = "54.171.128.243"
 
 def deploy():
   site_folder = '/home/%s/sites/%s' % (env.user, env.host)
@@ -27,11 +28,11 @@ def _get_lastest_source(source_folder):
   run('cd %s && git reset --hard %s' % (source_folder, current_commit))
 
 def _update_settings(source_folder, site_name):
-  setting_path = source_folder + '/superlists/settings.py'
+  setting_path = source_folder + '/testweb/settings.py'
   sed(setting_path, "DEBUG = True", "DEBUG = False")
   sed(setting_path,
       'ALLOWED_HOSTS =.+$',
-      'ALLOWED_HOSTS = ["%s"]' % (site_name,)
+      'ALLOWED_HOSTS = ["%s"]' % (URL,)
   )
   secret_key_file = source_folder + '/testweb/secret_key.py'
   if not exists(secret_key_file):
