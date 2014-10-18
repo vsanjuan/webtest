@@ -7,10 +7,6 @@ from lists.models import Item, List
 from lists.views import home_page #1
 
 # Create your tests here.
-# class SmokeTest(TestCase):
-#
-#   def test_bad_maths(self):
-#     self.assertEqual(1+1,3)
 
 class HomePageTest(TestCase):
 
@@ -25,43 +21,6 @@ class HomePageTest(TestCase):
     expected_html = render_to_string('home.html')
 
     self.assertEqual(response.content.decode(), expected_html)
-
-  # def test_home_page_only_saves_items_when_necessary(self):
-  #   request = HttpRequest()
-  #   home_page(request)
-  #   self.assertEqual(Item.objects.count(),0)
-
-
-
-class ListandItemModelTest(TestCase):
-
-  def test_saving_and_retrieving_items(self):
-
-    list_ = List()
-    list_.save()
-
-    first_item = Item()
-    first_item.text = 'The first (ever) list item'
-    first_item.list = list_
-    first_item.save()
-
-    second_item = Item()
-    second_item.text = 'The second list item'
-    second_item.list = list_
-    second_item.save()
-
-    saved_list = List.objects.first()
-    self.assertEqual(saved_list, list_)
-
-    saved_items = Item.objects.all()
-    self.assertEqual(saved_items.count(),2)
-
-    first_saved_item = saved_items[0]
-    second_saved_item = saved_items[1]
-    self.assertEqual(first_saved_item.text, 'The first (ever) list item')
-    self.assertEqual(first_saved_item.list, list_)
-    self.assertEqual(second_saved_item.text, 'The second list item')
-    self.assertEqual(second_saved_item.list, list_)
 
 class ListViewTest(TestCase):
 
