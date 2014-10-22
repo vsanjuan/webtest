@@ -44,3 +44,10 @@ class ListandItemModelTest(TestCase):
   def test_get_absolute_url(self):
     list_ = List.objects.create()
     self.assertEqual(list_.get_absolute_url(), '/lists/%d/' % (list_.id,))
+
+  def test_duplicate_items_are_invalid(self):
+    list_ = List.objects.create()
+    Item.objects.create(list=list_, text='bla') # creates and saves an Item object
+    with self.assertRaises(ValidationError): # if it raises a validation error
+      item = Item(list=list_, text='bla')
+      item.full_clean() # full_clean erases the object ?
