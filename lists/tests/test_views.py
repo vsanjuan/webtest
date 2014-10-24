@@ -4,6 +4,7 @@ from django.http import HttpRequest
 from django.template.loader import render_to_string
 from lists.models import Item, List
 from django.core.exceptions import ValidationError
+from django.utils.html import escape
 
 from lists.views import home_page #1
 
