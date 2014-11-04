@@ -25,7 +25,7 @@ def _server() :
   # your user on that system
   env.user = user
   # Assumes that your *.pem key is in the same directory as your fabfile.py
-  env.key_filename = 'C:/Users/Salvador/.ssh/bitnami-hosting.pem'
+  env.key_filename = '/home/voro/.ssh/bitnami-hosting.pem'
 
 def _create_directory_structure_if_necessary(site_folder):
   for subfolder in ('database', 'static', 'virtualenv', 'source'):
